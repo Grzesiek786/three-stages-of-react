@@ -1,0 +1,74 @@
+.section-card {
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+
+    .card {
+        width: 20rem;
+        -webkit-box-shadow: 5px 5px 10px 0px rgba(66, 68, 90, 0.4);
+        -moz-box-shadow: 5px 5px 10px 0px rgba(66, 68, 90, 0.4);
+        box-shadow: 5px 5px 10px 0px rgba(66, 68, 90, 0.4);
+        padding-bottom: 3rem;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: translateY(-4px);
+        }
+
+        &-one {
+            justify-self: end;
+        }
+
+        &-img {
+            width: 100%;
+        }
+
+        .cards {
+            padding: 0 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+
+            &-title {
+                font-size: 1.6rem;
+                color: #333;
+                font-weight: 600;
+                margin-bottom: 2rem;
+            }
+
+            &-items {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                margin-left: 1rem;
+
+                &-item {
+                    position: relative;
+
+                    &::before {
+                        content: '>';
+                        display: block;
+                        position: absolute;
+                        left: -15px;
+                    }
+                }
+            }
+
+            .btn {
+                display: inline-block;
+                background-color: #f08c00;
+                color: #fff;
+                outline: none;
+                border: none;
+                text-decoration: none;
+                font-size: 1.2rem;
+                border-radius: 20px;
+                padding: 0.6rem 1.6rem;
+                transition: all 0.3s;
+            }
+        }
+    }
+}

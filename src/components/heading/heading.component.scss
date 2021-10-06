@@ -1,0 +1,82 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+
+    background-color: #fce7ca;
+
+    img.logo {
+        height: 4.4rem;
+    }
+
+    .main-nav {
+        
+      .main-nav-list {
+        list-style: none;
+        display: flex;
+        gap: 3.2rem;
+
+        .main-nav-link:link,
+        .main-nav-link:visited {
+          text-decoration: none;
+          color: #333;
+          font-size: 1.2rem;
+        }
+      }
+    }
+}
+
+.section-apple {
+    background-color: #fce8cc;
+    padding: 4rem 0;
+
+    .apple {
+        max-width: 70rem;
+        margin: 0 auto;
+        display: grid;
+        gap: 8rem;
+        grid-template-columns: 1fr 1fr;
+
+        .apple-text-box {
+            .heading-primary {
+                font-size: 2.4rem;
+                font-weight: 700;
+                line-height: 0.9;
+                letter-spacing: -0.9px;
+                color: #333;
+                margin-bottom: 3.4rem;
+            }
+
+            .apple-description {
+                font-size: 1.2rem;
+                line-height: 1.5;
+                margin-bottom: 2rem;
+            }
+        }
+        .apple-img-box {
+            img.apple-img {
+                width: 100%;
+            }
+        }
+
+        .btn:link,
+        .btn:visited {
+          display: inline-block;
+          background-color: #f08c00;
+          color: #fff;
+          text-decoration: none;
+          font-size: 1.4rem;
+          border-radius: 20px;
+          padding: 1rem 2rem;
+          transition: all 0.3s;
+        }
+
+        .btn:hover,
+        .btn:active {
+          background-color: #d87e00;
+
+          box-shadow: inset 0 0 0 3px #fff;
+        }
+    }
+}
