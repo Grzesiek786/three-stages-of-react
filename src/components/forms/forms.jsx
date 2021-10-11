@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import './forms.scss';
 
 const Forms = ({onAdd}) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [gender, setGender] = useState('');
+    const [genders, setGenders] = useState([
+        'Male',
+        'Genderqueer',
+        'Female',
+        'Polygender',
+        'Genderfluid',
+        'Agender',
+    ]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -14,14 +20,8 @@ const Forms = ({onAdd}) => {
         if (!firstName) return;
         if (!lastName) return;
         if (!email) return;
-        if (!gender) return;
 
-        onAdd({firstName, lastName, email, gender});
-
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setGender('');
+        onAdd({firstName, lastName, email, genders});
     };
 
     return (
@@ -45,7 +45,7 @@ const Forms = ({onAdd}) => {
                 />
             </div>
             <div className="form-control">
-                <label htmlFor="">Email</label>
+                <label htmlFor="">First Name</label>
                 <input
                     type="email"
                     placeholder="Email"
@@ -55,15 +55,18 @@ const Forms = ({onAdd}) => {
             </div>
             <div className="form-control">
                 <label htmlFor="">Gender</label>
-                <input
-                    type="text"
-                    placeholder="Gender"
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                />
+                <select placeholder="Genders">
+                    {genders.map((gender, index) => (
+                        <option
+                            key={index}
+                            value={gender}
+                            onChange={(e) => setGenders(e.target.value)}>
+                            {gender}
+                        </option>
+                    ))}
+                </select>
             </div>
-
-            <input type="submit" value="Add Address" />
+            <input type="submit" value="Add address" />
         </form>
     );
 };

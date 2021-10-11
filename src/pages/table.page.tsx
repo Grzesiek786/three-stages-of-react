@@ -80,8 +80,9 @@ const TablePage = () => {
     ]);
 
     // Add Address
-    const addAddress = (id: any) => {
-        setAddress([...address, id]);
+    const addAddress = (adres: any) => {
+        console.log(adres);
+        setAddress([...address, adres]);
     };
     return (
         <div className="container">
