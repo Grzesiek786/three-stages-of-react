@@ -72,7 +72,7 @@ const Forms = ({onAdd}) => {
 };
 
 Forms.propTypes = {
-    onAdd: PropTypes.obj,
+    onAdd: PropTypes.func,
 };
 
 export default Forms;
