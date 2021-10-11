@@ -18,8 +18,8 @@ const Address = ({address}) => {
                 {address.map((adres, index) => (
                     <tr key={index} className="table-body-tb">
                         <td>{index + 1}</td>
-                        <td>{adres.first_name}</td>
-                        <td>{adres.last_name}</td>
+                        <td>{adres.firstName}</td>
+                        <td>{adres.lastName}</td>
                         <td>{adres.email}</td>
                         <td>{adres.gender}</td>
                         <td>

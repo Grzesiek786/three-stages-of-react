@@ -9,79 +9,80 @@ const TablePage = () => {
     const [address, setAddress] = useState([
         {
             id: 1,
-            first_name: 'Lil',
-            last_name: 'Ouchterlony',
+            firstName: 'Lil',
+            lastName: 'Ouchterlony',
             email: 'louchterlony0@digg.com',
             gender: 'Male',
         },
         {
             id: 2,
-            first_name: 'Horacio',
-            last_name: 'Kaygill',
+            firstName: 'Horacio',
+            lastName: 'Kaygill',
             email: 'hkaygill1@patch.com',
             gender: 'Genderqueer',
         },
         {
             id: 3,
-            first_name: 'Ninon',
-            last_name: 'Harsent',
+            firstName: 'Ninon',
+            lastName: 'Harsent',
             email: 'nharsent2@about.me',
             gender: 'Female',
         },
         {
             id: 4,
-            first_name: 'Carlin',
-            last_name: 'Sundin',
+            firstName: 'Carlin',
+            lastName: 'Sundin',
             email: 'csundin3@gmpg.org',
             gender: 'Polygender',
         },
         {
             id: 5,
-            first_name: 'Mordy',
-            last_name: 'Tyce',
+            firstName: 'Mordy',
+            lastName: 'Tyce',
             email: 'mtyce4@networkadvertising.org',
             gender: 'Polygender',
         },
         {
             id: 6,
-            first_name: 'Pip',
-            last_name: 'Kersting',
+            firstName: 'Pip',
+            lastName: 'Kersting',
             email: 'pkersting5@cam.ac.uk',
             gender: 'Female',
         },
         {
             id: 7,
-            first_name: 'Theressa',
-            last_name: 'Nortcliffe',
+            firstName: 'Theressa',
+            lastName: 'Nortcliffe',
             email: 'tnortcliffe6@ft.com',
             gender: 'Genderfluid',
         },
         {
             id: 8,
-            first_name: 'Hilton',
-            last_name: 'Kippin',
+            firstName: 'Hilton',
+            lastName: 'Kippin',
             email: 'hkippin7@yale.edu',
             gender: 'Male',
         },
         {
             id: 9,
-            first_name: 'Gusti',
-            last_name: 'Bullerwell',
+            firstName: 'Gusti',
+            lastName: 'Bullerwell',
             email: 'gbullerwell8@buzzfeed.com',
             gender: 'Agender',
         },
         {
             id: 10,
-            first_name: 'Orsola',
-            last_name: 'Crossley',
+            firstName: 'Orsola',
+            lastName: 'Crossley',
             email: 'ocrossley9@umn.edu',
             gender: 'Agender',
         },
     ]);
 
     // Add Address
-    const addAddress = (id: any) => {
-        setAddress([...address, id]);
+    const addAddress = (addres: any) => {
+        console.log(addres);
+        // setAddress([...address, id]);
     };
     return (
         <div className="container">

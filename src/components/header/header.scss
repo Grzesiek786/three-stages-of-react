@@ -10,10 +10,16 @@
         padding: 1rem 2rem;
 
         &-add {
-            background-color: rgb(0, 168, 0);
+            background-color: #00a800;
             color: #fff;
             border: none;
             border-radius: 10px;
+            width: 7rem;
+            transition: all 0.3s;
+
+            &:active {
+              transform: translateY(2px);
+            }
         }
     }
 }
