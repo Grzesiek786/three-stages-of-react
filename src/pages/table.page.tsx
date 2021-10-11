@@ -1,94 +1,70 @@
 import Address from '@components/address/address';
 import Forms from '@components/forms/forms';
 import Header from '@components/header/header';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './home.page.scss';
 
 const TablePage = () => {
     const [showForm, setShowForm] = useState(true);
-    const [address, setAddress] = useState([
-        {
-            id: 1,
-            firstName: 'Lil',
-            lastName: 'Ouchterlony',
-            email: 'louchterlony0@digg.com',
-            gender: 'Male',
-        },
-        {
-            id: 2,
-            firstName: 'Horacio',
-            lastName: 'Kaygill',
-            email: 'hkaygill1@patch.com',
-            gender: 'Genderqueer',
-        },
-        {
-            id: 3,
-            firstName: 'Ninon',
-            lastName: 'Harsent',
-            email: 'nharsent2@about.me',
-            gender: 'Female',
-        },
-        {
-            id: 4,
-            firstName: 'Carlin',
-            lastName: 'Sundin',
-            email: 'csundin3@gmpg.org',
-            gender: 'Polygender',
-        },
-        {
-            id: 5,
-            firstName: 'Mordy',
-            lastName: 'Tyce',
-            email: 'mtyce4@networkadvertising.org',
-            gender: 'Polygender',
-        },
-        {
-            id: 6,
-            firstName: 'Pip',
-            lastName: 'Kersting',
-            email: 'pkersting5@cam.ac.uk',
-            gender: 'Female',
-        },
-        {
-            id: 7,
-            firstName: 'Theressa',
-            lastName: 'Nortcliffe',
-            email: 'tnortcliffe6@ft.com',
-            gender: 'Genderfluid',
-        },
-        {
-            id: 8,
-            firstName: 'Hilton',
-            lastName: 'Kippin',
-            email: 'hkippin7@yale.edu',
-            gender: 'Male',
-        },
-        {
-            id: 9,
-            firstName: 'Gusti',
-            lastName: 'Bullerwell',
-            email: 'gbullerwell8@buzzfeed.com',
-            gender: 'Agender',
-        },
-        {
-            id: 10,
-            firstName: 'Orsola',
-            lastName: 'Crossley',
-            email: 'ocrossley9@umn.edu',
-            gender: 'Agender',
-        },
-    ]);
+    const [address, setAddress] = useState<any[]>([]);
+
+    useEffect(() => {
+        const getAddress = async () => {
+            const addressesFromServer = await fetchAddresses();
+            setAddress(addressesFromServer);
+        };
+
+        getAddress();
+    }, []);
+
+    // FetchAddress
+    const fetchAddresses = async () => {
+        const res = await fetch('http://localhost:5000/data');
+        const data = await res.json();
+
+        return data;
+    };
+
+    const fetchAddress = async (id: number) => {
+        const res = await fetch(`http://localhost:5000/data/${id}`);
+        const data = await res.json();
+
+        return data;
+    };
 
     // Add Address
-    const addAddress = (addres: any) => {
-        console.log(addres);
-        // setAddress([...address, id]);
+    const addAddress = async (addres: any) => {
+        const res = await fetch(`http://localhost:5000/data`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(addres),
+        });
+
+        const data = await res.json();
+        setAddress([...address, data]);
     };
+
+    // Update address
+    const updAddress = async (id: any) => {
+        const fetch = await fetchAddress(id);
+        console.log({...fetch});
+    };
+
+    // Delete address
+    const deleteAddress = async (id: number) => {
+        await fetch(`http://localhost:5000/data/${id}`, {
+            method: 'DELETE',
+        });
+        setAddress(address.filter((adres) => adres.id !== id));
+    };
+
     return (
         <div className="container">
             <Header onAddForm={() => setShowForm(!showForm)} show={showForm} />
             {showForm && <Forms onAdd={addAddress} />}
-            <Address address={address} />
+            <Address address={address} onDelete={deleteAddress} onUpdate={updAddress} />
         </div>
     );
 };

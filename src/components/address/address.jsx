@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './address.scss';
 
-const Address = ({address}) => {
+const Address = ({address, onDelete, onUpdate}) => {
     return (
         <table className="table">
             <thead className="table-header">
@@ -16,15 +16,19 @@ const Address = ({address}) => {
             </thead>
             <tbody className="table-body">
                 {address.map((adres, index) => (
-                    <tr key={index} className="table-body-tb">
+                    <tr key={adres.id} className="table-body-tb">
                         <td>{index + 1}</td>
                         <td>{adres.firstName}</td>
                         <td>{adres.lastName}</td>
                         <td>{adres.email}</td>
                         <td>{adres.gender}</td>
                         <td>
-                            <button className="btn btn-edit">Edit</button>
-                            <button className="btn btn-delete">Delete</button>
+                            <button className="btn btn-edit" onClick={(e) => onUpdate(adres.id)}>
+                                Edit
+                            </button>
+                            <button className="btn btn-delete" onClick={() => onDelete(adres.id)}>
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 ))}
@@ -35,6 +39,8 @@ const Address = ({address}) => {
 
 Address.propTypes = {
     address: PropTypes.object,
+    onDelete: PropTypes.func,
+    onUpdate: PropTypes.func,
 };
 
 export default Address;

@@ -7,7 +7,7 @@ const Forms = ({onAdd}) => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const genders = ['Male', 'Genderqueer', 'Female', 'Polygender', 'Genderfluid', 'Agender'];
-    const [selectedGender, setSelectedGender] = useState('');
+    const [selectedGender, setSelectedGender] = useState('Male');
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -15,8 +15,10 @@ const Forms = ({onAdd}) => {
         if (!firstName) return;
         if (!lastName) return;
         if (!email) return;
+        if (!selectedGender) return;
+        const gender = selectedGender;
 
-        onAdd({firstName, lastName, email, selectedGender});
+        onAdd({firstName, lastName, email, gender});
 
         setFirstName('');
         setLastName('');
@@ -56,15 +58,11 @@ const Forms = ({onAdd}) => {
                 </div>
                 <div className="form-control">
                     <label htmlFor="">Gender</label>
-                    <select>
+                    <select
+                        onChange={(e) => setSelectedGender(e.target.value)}
+                        value={selectedGender}>
                         {genders.map((gender, index) => (
-                            <option
-                                key={index}
-                                value={gender}
-                                selected={gender}
-                                onChange={(e) => setSelectedGender(e.target.value)}>
-                                {gender}
-                            </option>
+                            <option key={index}>{gender}</option>
                         ))}
                     </select>
                 </div>

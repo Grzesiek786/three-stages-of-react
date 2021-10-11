@@ -61,7 +61,8 @@
         "release": "standard-version",
         "bump-patch": "yarn version --patch --no-git-tag-version && yarn patch",
         "bump-minor": "yarn version --minor --no-git-tag-version && yarn minor",
-        "bump-major": "yarn version --major --no-git-tag-version && yarn release"
+        "bump-major": "yarn version --major --no-git-tag-version && yarn release",
+        "server": "json-server --watch db.json --port 5000"
     },
     "eslintConfig": {
         "extends": [
