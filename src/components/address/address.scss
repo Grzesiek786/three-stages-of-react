@@ -1,0 +1,16 @@
+.table {
+    border: 1px solid black;
+
+    &-header-th th {
+        background-color: rgb(3, 90, 0);
+        color: #fff;
+        padding: 1rem;
+    }
+
+    &-body-tb td {
+      background-color: #eee;
+        text-align: center;
+        padding: 1rem;
+        
+    }
+}
