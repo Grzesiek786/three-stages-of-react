@@ -12,7 +12,6 @@ const Address = ({address}) => {
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Ip_adress</th>
                 </tr>
             </thead>
             <tbody className="table-body">
@@ -23,7 +22,6 @@ const Address = ({address}) => {
                         <td>{adres.last_name}</td>
                         <td>{adres.email}</td>
                         <td>{adres.gender}</td>
-                        <td>{adres.ip_address}</td>
                         <td>
                             <button className="btn btn-edit">Edit</button>
                             <button className="btn btn-delete">Delete</button>
