@@ -54,10 +54,13 @@ const TablePage = () => {
 
     // Delete address
     const deleteAddress = async (id: number) => {
-        await fetch(`http://localhost:5000/data/${id}`, {
-            method: 'DELETE',
-        });
-        setAddress(address.filter((adres) => adres.id !== id));
+        const accepted = confirm('Are you sure');
+        if (accepted) {
+            await fetch(`http://localhost:5000/data/${id}`, {
+                method: 'DELETE',
+            });
+            setAddress(address.filter((adres) => adres.id !== id));
+        }
     };
 
     return (

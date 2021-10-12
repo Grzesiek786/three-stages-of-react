@@ -1,23 +1,32 @@
 {
-    "extends": "./tsconfig.paths.json",
-    "compilerOptions": {
-        "allowJs": true,
-        "baseUrl": "./",
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "isolatedModules": true,
-        "jsx": "react-jsx",
-        "moduleResolution": "node",
-        "noEmit": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "module": "esnext",
-        "resolveJsonModule": true,
-        "target": "esnext",
-        "skipLibCheck": true,
-        "noFallthroughCasesInSwitch": true
-    },
-    "exclude": ["node_modules"],
-    "include": ["src", "scripts"]
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src",
+    "scripts"
+  ]
 }
