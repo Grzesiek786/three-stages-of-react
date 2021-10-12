@@ -7,7 +7,7 @@ const Modal = ({address}) => {
     return (
         <div className="modal">
             <div className="modal-content">
-                <span className="close" onClick={() => setClose(close)}>
+                <span className="close" onClick={() => setClose(!close)}>
                     &times;
                 </span>
                 <form className="add-form">
@@ -50,7 +50,12 @@ const Modal = ({address}) => {
                     </div>
 
                     <input className="btn btn-save" type="button" value="Save Data" />
-                    <input className="btn btn-cancel" type="button" value="Cancel" />
+                    <input
+                        className="btn btn-cancel"
+                        type="button"
+                        value="Cancel"
+                        onClick={() => setClose(!close)}
+                    />
                 </form>
             </div>
         </div>
