@@ -27,46 +27,47 @@ const Forms = ({onAdd}) => {
     };
 
     return (
-        <form className="add-form" onSubmit={onSubmit}>
-            <div className="form">
-                <div className="form-control">
-                    <label htmlFor="">First Name</label>
-                    <input
-                        type="text"
-                        placeholder="First Name"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                    />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="">Last Name</label>
-                    <input
-                        type="text"
-                        placeholder="Last Name"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                    />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="">Email</label>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="">Gender</label>
-                    <select
-                        onChange={(e) => setSelectedGender(e.target.value)}
-                        value={selectedGender}>
-                        {genders.map((gender, index) => (
-                            <option key={index}>{gender}</option>
-                        ))}
-                    </select>
-                </div>
-                {/* <div className="form-control">
+        <>
+            <form className="add-form" onSubmit={onSubmit}>
+                <div className="form">
+                    <div className="form-control">
+                        <label htmlFor="">First Name</label>
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label htmlFor="">Last Name</label>
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label htmlFor="">Email</label>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label htmlFor="">Gender</label>
+                        <select
+                            onChange={(e) => setSelectedGender(e.target.value)}
+                            value={selectedGender}>
+                            {genders.map((gender, index) => (
+                                <option key={index}>{gender}</option>
+                            ))}
+                        </select>
+                    </div>
+                    {/* <div className="form-control">
                     <label htmlFor="">Gender</label>
                     <input
                         type="text"
@@ -75,10 +76,11 @@ const Forms = ({onAdd}) => {
                         onChange={(e) => setGender(e.target.value)}
                     />
                 </div> */}
-            </div>
+                </div>
 
-            <input className="btn btn-submit" type="submit" value="Add Address" />
-        </form>
+                <input className="btn btn-submit" type="submit" value="Add Address" />
+            </form>
+        </>
     );
 };
 

@@ -6,6 +6,7 @@ import './home.page.scss';
 
 const TablePage = () => {
     const [showForm, setShowForm] = useState(true);
+    const [showModal, setShowModal] = useState(true);
     const [address, setAddress] = useState<any[]>([]);
 
     useEffect(() => {
@@ -67,7 +68,13 @@ const TablePage = () => {
         <div className="container">
             <Header onAddForm={() => setShowForm(!showForm)} show={showForm} />
             {showForm && <Forms onAdd={addAddress} />}
-            <Address address={address} onDelete={deleteAddress} onUpdate={updAddress} />
+            <Address
+                address={address}
+                onDelete={deleteAddress}
+                onUpdate={updAddress}
+                modalShow={() => setShowModal(!showModal)}
+                modal={showModal}
+            />
         </div>
     );
 };
