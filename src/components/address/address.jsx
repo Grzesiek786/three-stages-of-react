@@ -51,7 +51,13 @@ const Address = ({address, onDelete, onUpdate}) => {
                     onClose={() => setShowModal(false)}
                     onSubmit={() => {
                         console.log('handle output here');
-                        // onUpdate({selectedAddress});
+                        onUpdate({
+                            id: selectedAddress.id,
+                            firstName: selectedAddress.firstName,
+                            lastName: selectedAddress.lastName,
+                            email: selectedAddress.email,
+                            gender: selectedAddress.gender,
+                        });
                     }}
                     address={selectedAddress}
                 />

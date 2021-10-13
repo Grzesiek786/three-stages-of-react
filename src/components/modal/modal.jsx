@@ -11,25 +11,16 @@ const Modal = ({address, onClose, onSubmit}) => {
     const genders = ['Male', 'Genderqueer', 'Female', 'Polygender', 'Genderfluid', 'Agender'];
     const [selectedGender, setSelectedGender] = useState('Male');
 
+    console.log(address);
     const submit = (e) => {
         e.preventDefault();
 
-        if (!firstName) return;
-        if (!lastName) return;
-        if (!email) return;
-        if (!selectedGender) return;
-
-        onAdd({
-            firstName: address.firstName,
-            lastName: address.lastName,
-            email: address.email,
-            gender: address.gender,
+        onSubmit({
+            firstName,
+            lastName,
+            email,
+            selectedGender,
         });
-
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setSelectedGender('');
     };
 
     // const submit = () => {
@@ -50,7 +41,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                             <input
                                 type="text"
                                 placeholder="First Name"
-                                value={address.firstName}
+                                value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
@@ -75,10 +66,10 @@ const Modal = ({address, onClose, onSubmit}) => {
                         <div className="form-control">
                             <label htmlFor="">Gender</label>
                             <select onChange={(e) => setSelectedGender(e.target.value)} value="">
-                                {/* {address.gender.map((gender, index) => (
+                                {genders.map((gender, index) => (
                                     <option key={index}>{gender}</option>
-                                ))} */}
-                                <option>{address.gender}</option>
+                                ))}
+                                {/* <option>{gender}</option> */}
                             </select>
                         </div>
                     </div>
@@ -87,7 +78,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                         className="btn btn-save"
                         type="button"
                         value="Save Data"
-                        onClick={() => onSubmit(() => submit)}
+                        onClick={() => onSubmit(submit)}
                     />
                     <input
                         className="btn btn-cancel"

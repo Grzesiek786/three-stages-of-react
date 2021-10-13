@@ -52,13 +52,18 @@ const TablePage = () => {
     };
 
     // Update address
-    const updAddress = async (id: any) => {
+    const updAddress = async (address: any) => {
+        const id = address.id;
+        const firstName = address.firstName;
+        const lastName = address.lastName;
+        const email = address.email;
+        const gender = address.gender;
         const res = await fetch(`http://localhost:5000/data/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(id),
+            body: JSON.stringify({firstName, lastName, email, gender}),
         });
 
         const data = await res.json();
