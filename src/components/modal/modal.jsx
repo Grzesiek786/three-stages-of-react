@@ -5,6 +5,37 @@ import './modal.scss';
 const Modal = ({address, onClose, onSubmit}) => {
     // <-- Dodano dwa callbacki by moc komunikowac sie z rodzicem
     // const [close, setClose] = useState(false); <--- usunięte ponieważ chcemy zrobić dumb component
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const genders = ['Male', 'Genderqueer', 'Female', 'Polygender', 'Genderfluid', 'Agender'];
+    const [selectedGender, setSelectedGender] = useState('Male');
+
+    const submit = (e) => {
+        e.preventDefault();
+
+        if (!firstName) return;
+        if (!lastName) return;
+        if (!email) return;
+        if (!selectedGender) return;
+
+        onAdd({
+            firstName: address.firstName,
+            lastName: address.lastName,
+            email: address.email,
+            gender: address.gender,
+        });
+
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setSelectedGender('');
+    };
+
+    // const submit = () => {
+
+    //     onSubmit({firstName, lastName, email, selectedGender});
+    // };
     return (
         <div className="modal">
             <div className="modal-content">
@@ -43,10 +74,11 @@ const Modal = ({address, onClose, onSubmit}) => {
                         </div>
                         <div className="form-control">
                             <label htmlFor="">Gender</label>
-                            <select onChange={(e) => e.target.value} value="">
+                            <select onChange={(e) => setSelectedGender(e.target.value)} value="">
                                 {/* {address.gender.map((gender, index) => (
                                     <option key={index}>{gender}</option>
                                 ))} */}
+                                <option>{address.gender}</option>
                             </select>
                         </div>
                     </div>
@@ -55,7 +87,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                         className="btn btn-save"
                         type="button"
                         value="Save Data"
-                        onClick={() => onSubmit(address)}
+                        onClick={() => onSubmit(() => submit)}
                     />
                     <input
                         className="btn btn-cancel"

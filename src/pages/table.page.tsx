@@ -53,8 +53,16 @@ const TablePage = () => {
 
     // Update address
     const updAddress = async (id: any) => {
-        const fetch = await fetchAddress(id);
-        console.log({...fetch});
+        const res = await fetch(`http://localhost:5000/data/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(id),
+        });
+
+        const data = await res.json();
+        console.log(data);
     };
 
     // Delete address
