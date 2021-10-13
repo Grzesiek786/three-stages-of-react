@@ -58,17 +58,15 @@ const TablePage = () => {
         const lastName = address.lastName;
         const email = address.email;
         const gender = address.gender;
-        if (firstName && lastName && email && gender) {
-            const res = await fetch(`http://localhost:5000/data/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({firstName, lastName, email, gender}),
-            });
-            const data = await res.json();
-            console.log(data);
-        }
+        const res = await fetch(`http://localhost:5000/data/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({firstName, lastName, email, gender}),
+        });
+        const data = await res.json();
+        console.log(data);
     };
 
     // Delete address
