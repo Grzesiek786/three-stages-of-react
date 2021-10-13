@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
 
-const Modal = ({address}) => {
-    const [close, setClose] = useState(false);
+const Modal = ({address, onClose, onSubmit}) => {
+    // <-- Dodano dwa callbacki by moc komunikowac sie z rodzicem
+    // const [close, setClose] = useState(false); <--- usunięte ponieważ chcemy zrobić dumb component
     return (
         <div className="modal">
             <div className="modal-content">
-                <span className="close" onClick={() => setClose(!close)}>
+                <span className="close" onClick={onClose}>
+                    {/*Modyfikacja uzycia metody z props*/}
                     &times;
                 </span>
                 <form className="add-form">
@@ -49,12 +51,17 @@ const Modal = ({address}) => {
                         </div>
                     </div>
 
-                    <input className="btn btn-save" type="button" value="Save Data" />
+                    <input
+                        className="btn btn-save"
+                        type="button"
+                        value="Save Data"
+                        onClick={() => onSubmit(address)}
+                    />
                     <input
                         className="btn btn-cancel"
                         type="button"
                         value="Cancel"
-                        onClick={() => setClose(!close)}
+                        onClick={onClose}
                     />
                 </form>
             </div>
@@ -64,7 +71,8 @@ const Modal = ({address}) => {
 
 Modal.propTypes = {
     address: PropTypes.object,
-    showModal: PropTypes.func,
+    onClose: PropTypes.func,
+    onSubmit: PropTypes.func,
 };
 
 export default Modal;

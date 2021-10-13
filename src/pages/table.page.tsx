@@ -20,10 +20,14 @@ const TablePage = () => {
 
     // FetchAddress
     const fetchAddresses = async () => {
-        const res = await fetch('http://localhost:5000/data');
-        const data = await res.json();
+        try {
+            const res = await fetch('http://localhost:5000/data');
+            const data = await res.json();
 
-        return data;
+            return data;
+        } catch (err) {
+            console.error('Fetch failed', err);
+        }
     };
 
     const fetchAddress = async (id: number) => {

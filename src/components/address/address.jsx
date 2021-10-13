@@ -5,6 +5,7 @@ import Modal from '@components/modal/modal';
 
 const Address = ({address, onDelete, onUpdate}) => {
     const [showModal, setShowModal] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState(null);
     return (
         <>
             <table className="table">
@@ -31,6 +32,7 @@ const Address = ({address, onDelete, onUpdate}) => {
                                     onClick={() => {
                                         onUpdate(adres.id);
                                         setShowModal(!showModal);
+                                        setSelectedAddress(adres);
                                     }}>
                                     Edit
                                 </button>
@@ -44,13 +46,21 @@ const Address = ({address, onDelete, onUpdate}) => {
                     ))}
                 </tbody>
             </table>
-            {showModal && <Modal show={showModal} address={address} />}
+            {showModal && (
+                <Modal
+                    onClose={() => setShowModal(false)}
+                    onSubmit={() => {
+                        console.log('handle output here');
+                    }}
+                    address={selectedAddress}
+                />
+            )}
         </>
     );
 };
 
 Address.propTypes = {
-    address: PropTypes.object,
+    address: PropTypes.array,
     onDelete: PropTypes.func,
     onUpdate: PropTypes.func,
     modalShow: PropTypes.func,
