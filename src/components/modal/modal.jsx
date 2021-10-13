@@ -11,7 +11,6 @@ const Modal = ({address, onClose, onSubmit}) => {
     const genders = ['Male', 'Genderqueer', 'Female', 'Polygender', 'Genderfluid', 'Agender'];
     const [selectedGender, setSelectedGender] = useState('Male');
 
-    console.log(address);
     const submit = (e) => {
         e.preventDefault();
 
@@ -41,7 +40,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                             <input
                                 type="text"
                                 placeholder="First Name"
-                                value={firstName}
+                                value={(address.firstName = firstName)}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
@@ -50,7 +49,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                             <input
                                 type="text"
                                 placeholder="Last Name"
-                                value={address.lastName}
+                                value={(address.lastName = lastName)}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
@@ -59,7 +58,7 @@ const Modal = ({address, onClose, onSubmit}) => {
                             <input
                                 type="email"
                                 placeholder="Email"
-                                value={address.email}
+                                value={(address.email = email)}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -78,7 +77,9 @@ const Modal = ({address, onClose, onSubmit}) => {
                         className="btn btn-save"
                         type="button"
                         value="Save Data"
-                        onClick={() => onSubmit(submit)}
+                        onClick={() => {
+                            onSubmit(submit);
+                        }}
                     />
                     <input
                         className="btn btn-cancel"
